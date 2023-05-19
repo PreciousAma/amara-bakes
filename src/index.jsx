@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import {
+	ThemeProvider,
+	createTheme,
+	CssBaseline,
+	GlobalStyles as MuiGlobalStyles,
+} from '@mui/material';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -27,10 +32,23 @@ const theme = createTheme({
 	},
 });
 
+const GlobalStyles = () => {
+	return (
+		<MuiGlobalStyles
+			styles={{
+				body: {
+					fontFamily: "'Lora', serif",
+				},
+			}}
+		/>
+	);
+};
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
 		<CssBaseline />
+		<GlobalStyles />
 		<ThemeProvider theme={theme}>
 			<App />
 		</ThemeProvider>
